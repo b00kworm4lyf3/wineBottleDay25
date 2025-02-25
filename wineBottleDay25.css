@@ -1,0 +1,163 @@
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #333333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff1493; /* Hot pink */
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+.heart {
+    font-size: 50px;
+    color: #ff1493; /* Hot pink */
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.welcome, .quiz, .letter {
+    background-color: #222222;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ff1493; /* Hot pink border */
+}
+
+.quiz {
+    display: none;
+    text-align: left;
+}
+
+.letter {
+    display: none;
+    position: relative;
+}
+
+button {
+    background-color: #ff1493; /* Hot pink */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 15px 0;
+    transition: transform 0.3s, background-color 0.3s;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #ff69b4; /* Lighter hot pink on hover */
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+label:hover {
+    background-color: #3a3a3a;
+}
+
+/* Custom radio buttons */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    top: 4px;
+    transition: border-color 0.2s;
+}
+
+input[type="radio"]:checked {
+    border-color: #ff1493; /* Hot pink border when checked */
+}
+
+input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #ff1493; /* Hot pink fill when checked */
+    border-radius: 50%;
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff1493; /* Hot pink */
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px); opacity: 1; }
+    100% { transform: translateY(400px); opacity: 0; }
+}
+
+.letter-content {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.letter-signature {
+    font-family: 'Pacifico', 'Brush Script MT', cursive;
+    font-size: 24px;
+    margin-top: 30px;
+    color: #ff1493; /* Hot pink */
+}
+
+.photo {
+    max-width: 300px;
+    border-radius: 15px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transform: rotate(-3deg);
+    border: 3px solid #ff1493; /* Hot pink border */
+}
+
+/* Glowing effect for elements */
+.glow {
+    text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <link rel="stylesheet" href="wineBottleDay25.css">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome" id="welcome">
+            <div class="heart">💖</div>
+            <h1 class="glow">Happy Anniversary!</h1>
+            <p>Hey there, my amazing boyfriend! I made this little website just for you.</p>
+            <p>Think you know everything about us? Let's find out!</p>
+            <img src="/api/placeholder/400/300" alt="placeholder" class="photo" />
+            <p>Are you ready for a little quiz about our relationship?</p>
+            <button onclick="startQuiz()">Let's Go!</button>
+        </div>
+        
+        <div class="quiz" id="quiz">
+            <h1 class="glow">Our Relationship Quiz</h1>
+            <form id="quizForm">
+                <div class="question">
+                    <p>1. Where did we go on our first date?</p>
+                    <label><input type="radio" name="q1" value="a"> That cute coffee shop</label>
+                    <label><input type="radio" name="q1" value="b"> The movie theater</label>
+                    <label><input type="radio" name="q1" value="c"> The park</label>
+                </div>
+                
+                <div class="question">
+                    <p>2. What's my favorite thing you do?</p>
+                    <label><input type="radio" name="q2" value="a"> When you make me laugh</label>
+                    <label><input type="radio" name="q2" value="b"> When you cook for me</label>
+                    <label><input type="radio" name="q2" value="c"> When you give me random hugs</label>
+                </div>
+                
+                <div class="question">
+                    <p>3. What's our song?</p>
+                    <label><input type="radio" name="q3" value="a"> That one we danced to at the party</label>
+                    <label><input type="radio" name="q3" value="b"> The one that was playing when we met</label>
+                    <label><input type="radio" name="q3" value="c"> That cheesy one you always sing to me</label>
+                </div>
+                
+                <div class="question">
+                    <p>4. What's my silly nickname for you?</p>
+                    <label><input type="radio" name="q4" value="a"> Sweetie Pie</label>
+                    <label><input type="radio" name="q4" value="b"> Mr. Cuddles</label>
+                    <label><input type="radio" name="q4" value="c"> Goofball</label>
+                </div>
+                
+                <div class="question">
+                    <p>5. What do I love most about you?</p>
+                    <label><input type="radio" name="q5" value="a"> Your kindness</label>
+                    <label><input type="radio" name="q5" value="b"> Your sense of humor</label>
+                    <label><input type="radio" name="q5" value="c"> All of the above (this is the right answer 😉)</label>
+                </div>
+                
+                <button type="button" onclick="checkAnswers()">Submit Answers</button>
+            </form>
+        </div>
+        
+        <div class="letter" id="letter">
+            <h1 class="glow">My Love Letter to You</h1>
+            <div id="letter-container">
+                <p class="letter-content" style="animation-delay: 0.5s;">
+                    Dear [Boyfriend's Name],
+                </p>
+                <p class="letter-content" style="animation-delay: 1s;">
+                    Happy Anniversary! Can you believe it's been another year of us?
+                </p>
+                <p class="letter-content" style="animation-delay: 1.5s;">
+                    I still remember when we first met. How nervous I was, how your smile made my heart skip a beat, and how quickly time flew by when we were together.
+                </p>
+                <p class="letter-content" style="animation-delay: 2s;">
+                    These past years together have been the best of my life. All the silly jokes, late-night conversations, adventures, and quiet moments have meant everything to me.
+                </p>
+                <p class="letter-content" style="animation-delay: 2.5s;">
+                    I love the way you [something specific you love about him]. I love how you [another thing you love]. I even love how you [something silly he does].
+                </p>
+                <p class="letter-content" style="animation-delay: 3s;">
+                    Thank you for being my partner, my best friend, and the best boyfriend I could ask for.
+                </p>
+                <p class="letter-content" style="animation-delay: 3.5s;">
+                    Here's to many more years of us being ridiculous together!
+                </p>
+                <p class="letter-signature" style="animation-delay: 4s;">
+                    All my love,<br>[Your Name]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create falling hearts in the background for the letter
+        function createFallingHearts() {
+            const letterDiv = document.getElementById('letter');
+            const hearts = ['💖', '💕', '💘', '💗', '💓'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                letterDiv.appendChild(heart);
+                
+                // Remove heart after animation completes
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }, 300);
+        }
+        
+        function startQuiz() {
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+        }
+        
+        function checkAnswers() {
+            // In a real quiz, you'd check the answers here
+            // But since this is for fun, let's just show the letter regardless
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+            createFallingHearts();
+        }
+    </script>
+</body>
+</html>
