@@ -45,6 +45,14 @@ const fortunes = [
     "I foresee many cozy nights, heartfelt conversations, and moments of pure understanding between you both in the years to come."
 ];
 
+const defaultQuestions = [
+    "What does our future hold?",
+    "Will we always be happy together?",
+    "Are we meant to be?",
+    "What makes our love special?",
+    "How strong is our connection?"
+];
+
 let fortuneCount = 0;
 const maxFortunes = 5;
 
@@ -62,17 +70,8 @@ function askFortune() {
     const questionInput = document.getElementById('fortune-question');
     let question = questionInput.value.trim();
     questionInput.value = '';
-    
-    const defaultQuestions = [
-        "What does our future hold?",
-        "Will we always be happy together?",
-        "Are we meant to be?",
-        "What makes our love special?",
-        "How strong is our connection?"
-    ];
-    
+
     if (!question) {
-        
         question = defaultQuestions[Math.floor(Math.random() * defaultQuestions.length)];
         defaultQuestions.splice(defaultQuestions.indexOf(question), 1); //remove used question
     }
