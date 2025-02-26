@@ -284,8 +284,6 @@ input[type="radio"]:checked::before {
     initial-value: 90deg; 
 } 
 
-
-
 @keyframes shimmer {
     0%, 100%{ 
         --gradient-angle: 90deg;
