@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Anniversary!</title>
+    <title>Happy Wine Bottle Day!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="wineBottleDay25.css">
 </head>
 <body>
     <div class="container">
         <div class="welcome" id="welcome">
-            <div class="heart">💖</div>
-            <h1 class="glow">Happy Anniversary!</h1>
-            <p>Hey there, my amazing boyfriend! I made this little website just for you.</p>
-            <p>Think you know everything about us? Let's find out!</p>
-            <img src="/api/placeholder/400/300" alt="placeholder" class="photo" />
-            <p>Are you ready for a little quiz about our relationship?</p>
+            <div class="heart">💕</div>
+            <h1 class="glow">Happy Wine Bottle Day!</h1>
+            <p>Good morning, my love! I made this little website for you n_n<br>
+               I'm so excited to celebrate another wine bottle day together!</p>
+            <img src="kevBday.JPG" alt="placeholder" class="photo" />
+            <!-- <p>Are you ready for a little quiz about our relationship?</p>
             <button onclick="startQuiz()">Let's Go!</button>
         </div>
         
@@ -58,6 +61,34 @@
                 
                 <button type="button" onclick="checkAnswers()">Submit Answers</button>
             </form>
+        </div> -->
+        <p>Let's consult the mystical crystal ball of love...</p>
+            <button onclick="startFortuneTeller()">See Our Future</button>
+        </div>
+        
+        <div class="fortune-teller" id="fortune-teller">
+            <h1 class="glow">Love Oracle</h1>
+            <p>Ask the crystal ball a question about our future together...</p>
+            
+            <div class="question-area">
+                <input type="text" class="fortune-input" id="fortune-question" placeholder="Ask anything about us...">
+                <button onclick="askFortune()">Ask</button>
+            </div>
+            
+            <div class="crystal-ball-container" onclick="askFortune()">
+                <div class="crystal-ball">
+                    <div class="shimmer"></div>
+                </div>
+                <div class="stand"></div>
+            </div>
+            
+            <div class="fortune-text" id="fortune-text"></div>
+            <p class="fortune-counter" id="fortune-counter">Fortunes revealed: 0 of 5</p>
+            
+            <div id="continue-button" style="display: none;">
+                <p class="final-fortune">The crystal ball has one final revelation...</p>
+                <button onclick="showLetter()">Reveal Final Fortune</button>
+            </div>
         </div>
         
         <div class="letter" id="letter">
@@ -112,15 +143,97 @@
             }, 300);
         }
         
-        function startQuiz() {
+        // function startQuiz() {
+        //     document.getElementById('welcome').style.display = 'none';
+        //     document.getElementById('quiz').style.display = 'block';
+        // }
+        
+        // function checkAnswers() {
+        //     // In a real quiz, you'd check the answers here
+        //     // But since this is for fun, let's just show the letter regardless
+        //     document.getElementById('quiz').style.display = 'none';
+        //     document.getElementById('letter').style.display = 'block';
+        //     createFallingHearts();
+        // }
+
+        // Fortune responses
+        const fortunes = [
+            "The stars reveal that many adventures await you both. Your bond will grow stronger with each passing month.",
+            "I see laughter in your future. The joy you bring to each other will light up even the darkest days.",
+            "The cosmic forces suggest that your connection is rare and special - a once in a lifetime love that will overcome any obstacle.",
+            "Your future together shimmers with possibility. Each day will bring new reasons to cherish what you have built together.",
+            "The mystical energies indicate that your relationship will continue to deepen, revealing new layers of love and understanding.",
+            "I sense that your journey together will be long and fulfilling. Your hearts are aligned in ways that transcend ordinary connection.",
+            "The ethereal signs point to a future filled with growth and mutual support. You will help each other become your best selves.",
+            "The crystal ball shows images of celebration and contentment. Your love creates a sanctuary in this chaotic world.",
+            "Your paths are intertwined by forces beyond comprehension. This connection was written in the stars long ago.",
+            "I foresee many cozy nights, heartfelt conversations, and moments of pure understanding between you both in the years to come."
+        ];
+        
+        let fortuneCount = 0;
+        const maxFortunes = 5;
+        
+        function startFortuneTeller() {
             document.getElementById('welcome').style.display = 'none';
-            document.getElementById('quiz').style.display = 'block';
+            document.getElementById('fortune-teller').style.display = 'block';
         }
         
-        function checkAnswers() {
-            // In a real quiz, you'd check the answers here
-            // But since this is for fun, let's just show the letter regardless
-            document.getElementById('quiz').style.display = 'none';
+        function askFortune() {
+            if (fortuneCount >= maxFortunes) {
+                return;
+            }
+            
+            // Get the question (or use a default one)
+            const questionInput = document.getElementById('fortune-question');
+            let question = questionInput.value.trim();
+            questionInput.value = '';
+            
+            if (!question) {
+                const defaultQuestions = [
+                    "What does our future hold?",
+                    "Will we always be happy together?",
+                    "Are we meant to be?",
+                    "What makes our love special?",
+                    "How strong is our connection?"
+                ];
+                question = defaultQuestions[Math.floor(Math.random() * defaultQuestions.length)];
+            }
+            
+            // Animation effect for crystal ball
+            const crystalBall = document.querySelector('.crystal-ball');
+            crystalBall.style.animation = 'none';
+            setTimeout(() => {
+                crystalBall.style.animation = 'glow 4s infinite alternate';
+            }, 10);
+            
+            // Display the fortune
+            const fortuneText = document.getElementById('fortune-text');
+            fortuneText.style.opacity = 0;
+            
+            setTimeout(() => {
+                // Pick a random fortune that hasn't been shown yet
+                const randomIndex = Math.floor(Math.random() * fortunes.length);
+                const fortune = fortunes[randomIndex];
+                
+                // Remove the used fortune to avoid repetition
+                fortunes.splice(randomIndex, 1);
+                
+                fortuneText.innerHTML = `<div class="stars">✨ ✨ ✨</div><div class="question-text">"${question}"</div>${fortune}<div class="stars">✨ ✨ ✨</div>`;
+                fortuneText.style.opacity = 1;
+                
+                // Increment fortune count
+                fortuneCount++;
+                document.getElementById('fortune-counter').textContent = `Fortunes revealed: ${fortuneCount} of ${maxFortunes}`;
+                
+                // Show continue button if we've reached max fortunes
+                if (fortuneCount >= maxFortunes) {
+                    document.getElementById('continue-button').style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        function showLetter() {
+            document.getElementById('fortune-teller').style.display = 'none';
             document.getElementById('letter').style.display = 'block';
             createFallingHearts();
         }
