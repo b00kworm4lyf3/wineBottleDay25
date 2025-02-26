@@ -72,6 +72,7 @@ function askFortune() {
             "How strong is our connection?"
         ];
         question = defaultQuestions[Math.floor(Math.random() * defaultQuestions.length)];
+        defaultQuestions.splice(defaultQuestions.indexOf(question), 1); //remove used question
     }
     
     // Animation effect for crystal ball
@@ -93,7 +94,7 @@ function askFortune() {
         // Remove the used fortune to avoid repetition
         fortunes.splice(randomIndex, 1);
         
-        fortuneText.innerHTML = `<div class="stars">✨ ✨ ✨</div><div class="question-text">"${question}"</div>${fortune}<div class="stars">✨ ✨ ✨</div>`;
+        fortuneText.innerHTML = `<div class="stars">✨ ✨ ✨</div><div class="question-text">"${question}"</div><p>${fortune}</p><div class="stars">✨ ✨ ✨</div>`;
         fortuneText.style.opacity = 1;
         
         // Increment fortune count
