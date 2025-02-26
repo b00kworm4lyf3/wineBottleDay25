@@ -63,14 +63,16 @@ function askFortune() {
     let question = questionInput.value.trim();
     questionInput.value = '';
     
+    const defaultQuestions = [
+        "What does our future hold?",
+        "Will we always be happy together?",
+        "Are we meant to be?",
+        "What makes our love special?",
+        "How strong is our connection?"
+    ];
+    
     if (!question) {
-        const defaultQuestions = [
-            "What does our future hold?",
-            "Will we always be happy together?",
-            "Are we meant to be?",
-            "What makes our love special?",
-            "How strong is our connection?"
-        ];
+        
         question = defaultQuestions[Math.floor(Math.random() * defaultQuestions.length)];
         defaultQuestions.splice(defaultQuestions.indexOf(question), 1); //remove used question
     }
